@@ -15,6 +15,10 @@ module ProfileWizard::Models
           define_method(question_key) do
             @questions[question_key] ||= ProfileWizard::Models::Question.new(question_key, question_schema, step_ref)
           end
+
+          define_method("#{question_key}=") do |val|
+            @questions[question_key].answer = val
+          end
         end
         send(question_key)
       end
