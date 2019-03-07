@@ -6,7 +6,7 @@ module ProfileWizard
   module Models
     def profile_wizard(profile_attr, profile_schema, opts = {})
       define_method(profile_attr) do
-        @profile_attr ||= ProfileWizard::Models::Profile.new profile_schema
+        @profile_attr ||= ProfileWizard::Models::Profile.new profile_attr, profile_schema, self
       end
     end
   end

@@ -1,5 +1,7 @@
 module ProfileWizard::Models
   class Question
+    attr_accessor :answer
+
     def initialize(question_key, question_schema, step)
       @step = step
       @meta_info = {}
