@@ -18,6 +18,11 @@ module ProfileWizard::Models
 
     def save
       answer.data = json_answer_data
+      answer.save if answer.data_changed?
+    end
+
+    def save!
+      answer.data = json_answer_data
       answer.save! if answer.data_changed?
     end
 

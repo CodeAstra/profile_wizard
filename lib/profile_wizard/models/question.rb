@@ -6,15 +6,15 @@ module ProfileWizard::Models
       @step = step
       @meta_info = {}
       @meta_info[:title] = question_schema[:title] || ActiveSupport::Inflector.humanize(question_key).titleize
-      @meta_info[:mandatory] = question_schema[:mandatory].nil? ? step.mandatory? : question_schema[:mandatory]
+      @meta_info[:required] = question_schema[:required].nil? ? step.required? : question_schema[:required]
     end
 
     def title
       @meta_info[:title]
     end
 
-    def mandatory?
-      @meta_info[:mandatory]
+    def required?
+      @meta_info[:required]
     end
   end
 end

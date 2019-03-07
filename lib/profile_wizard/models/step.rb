@@ -2,13 +2,13 @@ module ProfileWizard::Models
   class Step
     attr_accessor :questions,
                   :profile_wizard_step_title,
-                  :profile_wizard_step_mandatory
+                  :profile_wizard_step_required
 
     def initialize(step_key, step_schema)
       @questions = {}
       @meta_info = {}
       @meta_info[:title] = step_schema[:title] || ActiveSupport::Inflector.humanize(step_key).titleize
-      @meta_info[:mandatory] = step_schema[:mandatory] || false
+      @meta_info[:required] = step_schema[:required] || false
       step_ref = self
       step_schema[:questions].each do |question_key, question_schema|
         self.class.class_eval do
@@ -29,8 +29,8 @@ module ProfileWizard::Models
       @meta_info[:title]
     end
 
-    def mandatory?
-      @meta_info[:mandatory]
+    def required?
+      @meta_info[:required]
     end
   end
 end
