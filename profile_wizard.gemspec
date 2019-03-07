@@ -7,11 +7,11 @@ require "profile_wizard/version"
 Gem::Specification.new do |spec|
   spec.name        = "profile_wizard"
   spec.version     = ProfileWizard::VERSION
-  spec.authors     = ["BV Satyaramwq"]
+  spec.authors     = ["BV Satyaram"]
   spec.email       = ["bvsatyaram@gmail.com"]
-  spec.homepage    = "TODO"
-  spec.summary     = "TODO: Summary of ProfileWizard."
-  spec.description = "TODO: Description of ProfileWizard."
+  spec.homepage    = "https://www.codeastra.com"
+  spec.summary     = "Summary of ProfileWizard."
+  spec.description = "Description of ProfileWizard."
   spec.license     = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
