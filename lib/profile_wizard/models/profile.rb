@@ -16,6 +16,16 @@ module ProfileWizard::Models
       end
     end
 
+    def update(hsh)
+      hsh.each do |step_key, step_hsh|
+        step_hsh.each do |question_key, val|
+          send(step_key).send("#{question_key}=", val)
+        end
+      end
+
+      save
+    end
+
     def save
       answer.data = json_answer_data
       answer.save if answer.data_changed?
