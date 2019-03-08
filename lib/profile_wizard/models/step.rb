@@ -4,7 +4,7 @@ module ProfileWizard::Models
                   :profile_wizard_step_title,
                   :profile_wizard_step_required
 
-    def initialize(step_key, step_schema)
+    def initialize(step_key, step_schema, answer_hsh)
       @questions = {}
       @meta_info = {}
       @meta_info[:title] = step_schema[:title] || ActiveSupport::Inflector.humanize(step_key).titleize
@@ -13,7 +13,7 @@ module ProfileWizard::Models
       step_schema[:questions].each do |question_key, question_schema|
         self.class.class_eval do
           define_method(question_key) do
-            @questions[question_key] ||= ProfileWizard::Models::Question.new(question_key, question_schema, step_ref)
+            @questions[question_key] ||= ProfileWizard::Models::Question.new(question_key, question_schema, step_ref, answer_hsh[step_key.to_s])
           end
 
           define_method("#{question_key}=") do |val|

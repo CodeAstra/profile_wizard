@@ -9,7 +9,7 @@ module ProfileWizard::Models
       profile_schema.each do |step_key, step_schema|
         self.class.class_eval do
           define_method(step_key) do
-            @steps[step_key] ||= ProfileWizard::Models::Step.new(step_key, step_schema)
+            @steps[step_key] ||= ProfileWizard::Models::Step.new(step_key, step_schema, answer.data)
           end
         end
         send(step_key)
