@@ -12,13 +12,12 @@ class User
       required: true,
       questions: {
         name: {
-          title: 'Name',
+          title: 'Name', # This is redundant, as the title can be inferred from key by humanizing it.
           type: :string,
           placeholder: 'John Doe',
           hint: 'Name as in passport'
         },
         gender: {
-          title: 'Gender',
           type: :select,
           options: %w[Male Female]
         }
