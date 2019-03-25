@@ -109,7 +109,7 @@ class User
     }
   }
 end
-``
+```
 
 ## Front-end Engine
 This gem only handles the schema definition and the database handling at the back-end. You will need to use a front-end engine to work with _profile_wizard_ gem. Alternatively, you could write your own HTML to submit the data in the required format.
