@@ -16,6 +16,11 @@ class User
           type: :string,
           placeholder: 'John Doe',
           hint: 'Name as in passport'
+        },
+        gender: {
+          title: 'Gender',
+          type: :select,
+          options: %w[Male Female]
         }
       }
     },
@@ -57,7 +62,7 @@ The details the section are define by a hash with the schema below:
 ### Question Schema
 Each section has several questions. Each question is defined by a key value pair.
 
-The keys are symbols; Please keep them unique and DO NOT change them. Changing the keys would lose all the answers of the question. In the example above, `name`, `contact`, `department` are the keys for the questions.
+The keys are symbols; Please keep them unique and DO NOT change them. Changing the keys would lose all the answers of the question. In the example above, `name`, `gender`, `contact`, `department` are the keys for the questions.
 
 The details of each question are define by a hash with the schema below:
 
@@ -69,7 +74,7 @@ The details of each question are define by a hash with the schema below:
 | `required` | Defines if the question is required, or not. The value define dhere overrides the value defined at section level, if any.<br>Allowed Values: `true`, `false`. | N/A |
 | `hint` | A hint shown below the input area | N/A |
 | `default` | The default initial value | N/A |
-| `options` | The options to be shown, in case the question `type` is either `:select` or `:checkbox`.<br>The value is a hash, with both keys and values as strings. The keys of the hash would be the values of the `option` and the values of the hash will be the content of the `option` tag. | `{}` |
+| `options` | The options to be shown, in case the question `type` is either `:select` or `:checkbox`.<br>The value is a hash, with both keys and values as strings. The keys of the hash would be the values of the `option` and the values of the hash will be the content of the `option` tag.<br>In case the key and values are same for all the options, you can just pass in an array of strings. | `{}` |
 
 ### Front-end Engine
 This gem only handles the schema definition and the database handling at the back-end. You will need to use a front-end engine to work with _profile_wizard_ gem. Alternatively, you could write your own HTML to submit the data in the required format.
