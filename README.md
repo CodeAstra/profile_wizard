@@ -71,13 +71,20 @@ The details of each question are define by a hash with the schema below:
 | `default` | The default initial value | N/A |
 | `options` | The options to be shown, in case the question `type` is either `:select` or `:checkbox`.<br>The value is a hash, with both keys and values as strings. The keys of the hash would be the values of the `option` and the values of the hash will be the content of the `option` tag. | `{}` |
 
+### Front-end Engine
+This gem only handles the schema definition and the database handling at the back-end. You will need to use a front-end engine to work with _profile_wizard_ gem. Alternatively, you could write your own HTML to submit the data in the required format.
+
+We officially support [profile_wizard_bootstrap](https://github.com/CodeAstra/profile_wizard_bootstrap) rails engine that seemlessly works using Bootstrap 4. We are working on an engine with React support and will release it soon.
 
 ## Installation
 Add this line to your application's Gemfile:
 
 ```ruby
 gem 'profile_wizard'
+gem 'profile_wizard_bootstrap' # Optional
 ```
+
+The inclusion of the gem `profile_wizard_bootstrap` is optional as explained in the [Front-end Engine](#fornt-end-engine) section above.
 
 And then execute:
 ```bash
