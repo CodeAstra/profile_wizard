@@ -55,7 +55,7 @@ The details the section are define by a hash with the schema below:
 
 | Key | Explanation |
 | --- | ----------- |
-| `title` | A human readable string. This is shown as the heading of the section. |
+| `title` | A human readable string. This is shown as the heading of the section.<br>When the title is not provided, the title will be guessed by humanizing the key. |
 | `required` | Setting this to true will make all the questions in the section to be required.<br>Allowed Values: `true`, `false` |
 | `questions` | List of questiosn defined as a hash, the keys being unique identifiers for each question and the calue being another hash with the question schema |
 
@@ -68,7 +68,7 @@ The details of each question are define by a hash with the schema below:
 
 | Key | Explanation | Default Value |
 | --- | ----------- | --------------|
-| `title` | A human readable string. This is shown as the label of the associated form field | N/A |
+| `title` | A human readable string. This is shown as the label of the associated form field.<br>When the title is not provided, the title will be guessed by humanizing the key | N/A |
 | `type` | The type of the HTML form field that need to be rendered.<br>Allowed Values: `:checkbox`, `:date`, `:email`, `:file`, `:number`, `:password`, `:select`, `:string`, `:tel`, `:text` | `:string` |
 | `placeholder` | The placeholder value of the input field | N/A |
 | `required` | Defines if the question is required, or not. The value define dhere overrides the value defined at section level, if any.<br>Allowed Values: `true`, `false`. | N/A |
@@ -76,7 +76,42 @@ The details of each question are define by a hash with the schema below:
 | `default` | The default initial value | N/A |
 | `options` | The options to be shown, in case the question `type` is either `:select` or `:checkbox`.<br>The value is a hash, with both keys and values as strings. The keys of the hash would be the values of the `option` and the values of the hash will be the content of the `option` tag.<br>In case the key and values are same for all the options, you can just pass in an array of strings. | `{}` |
 
-### Front-end Engine
+### Question Groups
+You can optionally group a set of questions within a section using `question_groups`. These will be displayed as fieldsets in HTML.
+
+```ruby
+class User
+  profile_wizard :info, {
+    address: {
+      title: 'Address',
+      question_groups: {
+        permanent: {
+          title: 'Permanent Address',
+          questions: {
+            line_1: { type: :string },
+            line_2: { type: :string },
+            city: { type: :string },
+            state: { type: :string },
+            postal_code: { type: :string },
+          }
+        },
+        temporary: {
+          title: 'Temporary Address',
+          questions: {
+            line_1: { type: :string },
+            line_2: { type: :string },
+            city: { type: :string },
+            state: { type: :string },
+            postal_code: { type: :string },
+          }
+        }
+      }
+    }
+  }
+end
+``
+
+## Front-end Engine
 This gem only handles the schema definition and the database handling at the back-end. You will need to use a front-end engine to work with _profile_wizard_ gem. Alternatively, you could write your own HTML to submit the data in the required format.
 
 We officially support [profile_wizard_bootstrap](https://github.com/CodeAstra/profile_wizard_bootstrap) rails engine that seemlessly works using Bootstrap 4. We are working on an engine with React support and will release it soon.
