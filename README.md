@@ -84,7 +84,7 @@ gem 'profile_wizard'
 gem 'profile_wizard_bootstrap' # Optional
 ```
 
-The inclusion of the gem `profile_wizard_bootstrap` is optional as explained in the [Front-end Engine](#fornt-end-engine) section above.
+The inclusion of the gem `profile_wizard_bootstrap` is optional as explained in the [Front-end Engine](#front-end-engine) section above.
 
 And then execute:
 ```bash
